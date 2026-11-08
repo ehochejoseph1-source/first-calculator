@@ -11,6 +11,7 @@ let multiplyBtn = document.getElementById("multiplyBtn");
 let divideBtn = document.getElementById("divideBtn");
 let clearBtn = document.getElementById("clearBtn");
 let equalBtn = document.getElementById("equals")
+let zero = document.getElementById("zero") 
 
 
 
@@ -72,9 +73,21 @@ divideBtn.addEventListener("click", function() {
     currentNumber = ""
     operator += "/" 
 })
+zero.addEventListener("click", function(){
+    if (display.textContent === "0"){
+        currentNumber = "";
+    }
+})
 equalBtn.addEventListener("click", function(){
     secondNumber = currentNumber
     let result = operate(operator, Number(firstNumber), Number(secondNumber))
 
     display.textContent = result
+})
+clearBtn.addEventListener("click", () => {
+    display.textContent= "0"
+    currentNumber = ""
+    firstNumber = ""
+    secondNumber = ""
+    operator = ""
 })
