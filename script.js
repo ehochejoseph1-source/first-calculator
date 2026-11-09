@@ -13,7 +13,7 @@ let clearBtn = document.getElementById("clearBtn");
 let equalBtn = document.getElementById("equals")
 let zero = document.getElementById("zero") 
 let point = document.getElementById("point")
-
+let backspaceBtn = document.getElementById("backspaceBtn")
 
 
 
@@ -168,4 +168,48 @@ point.addEventListener("click", () => {
     currentNumber += "."
    }
     display.textContent = currentNumber
+})
+
+backspaceBtn.addEventListener("click", () => {
+     if (operator === "" || firstNumber === "" || currentNumber === "") {
+      currentNumber = currentNumber.slice(0, -1)
+   
+    } 
+     if (firstNumber !== "" && operator !== "") {
+        return;
+    }
+     display.textContent = currentNumber
+     event.stopPropagation() 
+})
+
+document.addEventListener("keydown", function (event) {
+    console.log(event.key)
+    if (event.key >= "0" && event.key <= "9") {
+        currentNumber += `${event.key}`
+        display.textContent = currentNumber
+    }
+    if (event.key === "Enter") {
+        event.preventDefault()
+        equalBtn.click()
+    }
+    if (event.key === "Backspace") {
+        event.preventDefault()
+        backspaceBtn.click()
+    }
+    if (event.key === "Escape") {
+        event.preventDefault()
+        clearBtn.click()
+    }
+    if (event.key === "+") {
+        addBtn.click()
+    }
+    if (event.key === "-") {
+        subtractBtn.click()
+    }
+    if (event.key === "*") {
+        multiplyBtn.click()
+    }
+    if (event.key === "/") {
+        divideBtn.click()
+    }
 })

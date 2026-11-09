@@ -75,11 +75,17 @@ button:focus-visible {
 }
 
 .clear {
-    grid-column: span 3;
+    grid-column: span 2;
     background: #fee2e2;
     color: #b91c1c;
 }
-
+#backspaceBtn {
+    color: rgb(165, 44, 8);
+    background-color: rgb(243, 198, 114);
+}
+#backspaceBtn:hover {
+    background-color: orange;
+}
 .clear:hover {
     background: #fecaca;
 }
