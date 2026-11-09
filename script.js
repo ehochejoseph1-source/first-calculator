@@ -188,6 +188,10 @@ document.addEventListener("keydown", function (event) {
         currentNumber += `${event.key}`
         display.textContent = currentNumber
     }
+    if (event.key === ".") {
+        event.preventDefault()
+        point.click()
+    }
     if (event.key === "Enter") {
         event.preventDefault()
         equalBtn.click()
