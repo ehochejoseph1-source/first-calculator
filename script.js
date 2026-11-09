@@ -55,17 +55,23 @@ buttons.forEach(number => {
 })
 
 addBtn.addEventListener("click", function() {
-    firstNumber = currentNumber 
-    currentNumber = ""
-    operator += "+"
-    if (!(operator === "")) {
-        secondNumber = currentNumber
-        
-        result = operate(operator, Number(firstNumber), Number(secondNumber))
-         display.textContent = result
-        secondNumber = ''
-      currentNumber = ""
+   
+   
+    if(operator !== "" && currentNumber !== "") {
+        secondNumber = currentNumber;
+
+        result = operate(operator, Number(firstNumber), Number(secondNumber));
+         display.textContent = result;
+         firstNumber = result;
+        currentNumber = "";
+        secondNumber = ""
+       
     } 
+     else{
+         firstNumber = currentNumber 
+        currentNumber = ""
+    }
+     operator = "+"
 })
 subtractBtn.addEventListener("click", function() {
     firstNumber = currentNumber 
