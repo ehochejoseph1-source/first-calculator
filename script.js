@@ -31,13 +31,13 @@ function divide(first, second){
 }
 function operate(operator,first,second) {
     if (operator === "+") {
-        return add(first,second)
+        return Number(add(first,second).toFixed(3))
     }else if (operator === "-") {
-        return subtract(first,second)
+        return Number(subtract(first,second).toFixed(3))
     }else if (operator === "*") {
-        return multiply(first,second)
+        return Number(multiply(first,second).toFixed(3))
     }else if (operator === "/") {
-        return divide(first,second)
+        return Number(divide(first,second).toFixed(3))
     }
 
 }
@@ -130,10 +130,14 @@ zero.addEventListener("click", function(){
     }
 })
 equalBtn.addEventListener("click", function(){
-    secondNumber = currentNumber
+    if (operator === "" || firstNumber === "" || currentNumber === "") {
+       return;
+    } else  {
+        secondNumber = currentNumber
     let result = operate(operator, Number(firstNumber), Number(secondNumber))
 
     display.textContent = result
+    }
 })
 clearBtn.addEventListener("click", () => {
     display.textContent= "0"
