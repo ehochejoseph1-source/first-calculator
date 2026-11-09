@@ -67,9 +67,13 @@ addBtn.addEventListener("click", function() {
         secondNumber = ""
        
     } 
+   else if (operator !== "") {
+     operator = "+"
+   }
      else{
          firstNumber = currentNumber 
         currentNumber = ""
+        
     }
      operator = "+"
 })
@@ -83,7 +87,9 @@ subtractBtn.addEventListener("click", function() {
         currentNumber = "";
         secondNumber = ""
        
-    } 
+    } else if (operator !== "") {
+     operator = "-"
+    }
      else{
          firstNumber = currentNumber 
         currentNumber = ""
@@ -101,6 +107,9 @@ multiplyBtn.addEventListener("click", function() {
         secondNumber = ""
        
     } 
+     else if (operator !== "") {
+     operator = "*"
+    }
      else{
          firstNumber = currentNumber 
         currentNumber = ""
@@ -118,6 +127,9 @@ divideBtn.addEventListener("click", function() {
         secondNumber = ""
        
     } 
+    else if (operator !== "") {
+     operator = "/"
+    }
      else{
          firstNumber = currentNumber 
         currentNumber = ""
