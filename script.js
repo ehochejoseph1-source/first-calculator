@@ -12,7 +12,7 @@ let divideBtn = document.getElementById("divideBtn");
 let clearBtn = document.getElementById("clearBtn");
 let equalBtn = document.getElementById("equals")
 let zero = document.getElementById("zero") 
-
+let point = document.getElementById("point")
 
 
 
@@ -48,6 +48,7 @@ let operator = "";
 let currentNumber = ""
 buttons.forEach(number => {
     number.addEventListener("click", function(){
+      
         currentNumber += number.textContent
         display.textContent = currentNumber 
     })
@@ -56,7 +57,15 @@ buttons.forEach(number => {
 addBtn.addEventListener("click", function() {
     firstNumber = currentNumber 
     currentNumber = ""
-    operator += "+" 
+    operator += "+"
+    if (!(operator === "")) {
+        secondNumber = currentNumber
+        
+        result = operate(operator, Number(firstNumber), Number(secondNumber))
+         display.textContent = result
+        secondNumber = ''
+      currentNumber = ""
+    } 
 })
 subtractBtn.addEventListener("click", function() {
     firstNumber = currentNumber 
@@ -90,4 +99,15 @@ clearBtn.addEventListener("click", () => {
     firstNumber = ""
     secondNumber = ""
     operator = ""
+})
+point.addEventListener("click", () => {
+    if (currentNumber.includes(".")){
+        currentNumber += ""
+    }else if (currentNumber === ""){
+     currentNumber = "0."
+   }
+    else {
+    currentNumber += "."
+   }
+    display.textContent = currentNumber
 })
