@@ -4,7 +4,7 @@ let error = document.getElementById("error");
 
 let buttons = document.querySelectorAll(".number")
 
-
+let DisplayedResult = false;
 let addBtn = document.getElementById("addBtn");
 let subtractBtn = document.getElementById("subtractBtn");
 let multiplyBtn = document.getElementById("multiplyBtn");
@@ -48,9 +48,15 @@ let operator = "";
 let currentNumber = ""
 buttons.forEach(number => {
     number.addEventListener("click", function(){
-      
+      if (!DisplayedResult) {
         currentNumber += number.textContent
         display.textContent = currentNumber 
+      }
+        if (DisplayedResult) {
+            clearBtn.click()
+            currentNumber += number.textContent
+          display.textContent = currentNumber 
+        }
     })
 })
 
@@ -59,7 +65,7 @@ addBtn.addEventListener("click", function() {
    
     if(operator !== "" && currentNumber !== "") {
         secondNumber = currentNumber;
-
+        
         result = operate(operator, Number(firstNumber), Number(secondNumber));
          display.textContent = result;
          firstNumber = result;
@@ -76,6 +82,7 @@ addBtn.addEventListener("click", function() {
         
     }
      operator = "+"
+     DisplayedResult = false
 })
 subtractBtn.addEventListener("click", function() {
     if(operator !== "" && currentNumber !== "") {
@@ -95,6 +102,7 @@ subtractBtn.addEventListener("click", function() {
         currentNumber = ""
     }
      operator = "-" 
+     DisplayedResult = false
 })
 multiplyBtn.addEventListener("click", function() {
     if(operator !== "" && currentNumber !== "") {
@@ -115,6 +123,7 @@ multiplyBtn.addEventListener("click", function() {
         currentNumber = ""
     }
      operator = "*"
+     DisplayedResult = false
 })
 divideBtn.addEventListener("click", function() {
     if(operator !== "" && currentNumber !== "") {
@@ -134,7 +143,8 @@ divideBtn.addEventListener("click", function() {
          firstNumber = currentNumber 
         currentNumber = ""
     }
-     operator = "/" 
+     operator = "/"
+     DisplayedResult = false;  
 })
 zero.addEventListener("click", function(){
     if (display.textContent === "0"){
@@ -149,6 +159,10 @@ equalBtn.addEventListener("click", function(){
     let result = operate(operator, Number(firstNumber), Number(secondNumber))
 
     display.textContent = result
+        DisplayedResult = true
+    firstNumber = result 
+    currentNumber = ""
+    secondNumber = ""
     }
 })
 clearBtn.addEventListener("click", () => {
